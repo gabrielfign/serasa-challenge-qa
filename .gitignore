@@ -1,0 +1,45 @@
+# Node Modules
+node_modules
+
+# Builds
+/.next/
+/out/
+/storybook-static/
+
+# Environment
+.env*.local
+
+# Editor files
+.idea/
+
+# Trash
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+newrelic_agent.log
+.lighthouseci
+
+# Yarn
+yarn-error.log
+
+# Reports
+/__reports__
+/coverage
+/bundles
+
+# Docs
+/__docs__
+# this file is a copy of root README.md
+docs/README.md
+
+# asdf vm 
+.tool-versions
+
+cypress.env.json
+
+allure-results
+/allure-report
