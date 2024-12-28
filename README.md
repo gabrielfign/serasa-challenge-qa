@@ -40,6 +40,7 @@ Para executar o projeto, siga os passos abaixo:
  # Cypress Test Runner
  npm run cypress:open
 ``` 
+![report-mocha](image.png)
 
 ## 📫 Contribuir Para contribuir com o projeto, siga estas etapas: 
 
