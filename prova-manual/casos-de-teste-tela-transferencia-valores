@@ -1,0 +1,41 @@
+Feature: Transferência de Valores entre correntistas
+
+  Scenario: Realizar transferência válida
+    Given o usuário tem saldo suficiente na conta
+    And todos os campos obrigatórios estão preenchidos corretamente
+    When ele realiza uma transferência para outra conta
+    Then a transação deve ser concluída com sucesso
+
+  Scenario: Bloqueio por saldo insuficiente
+    Given o usuário tenta transferir um valor maior que o saldo disponível
+    When ele tenta confirmar a transferência
+    Then o sistema deve exibir uma mensagem de saldo insuficiente e bloquear a operação
+
+  Scenario: Conta de destino inválida
+    Given o usuário insere um número de conta inválido
+    When ele tenta realizar a transferência
+    Then o sistema deve rejeitar a transação com uma mensagem de erro
+
+  Scenario: Transferência no limite do saldo
+    Given o saldo do usuário é exatamente R$200,00
+    When ele tenta transferir esse valor
+    Then a operação deve ser permitida sem erros
+
+  Scenario: Validação de dados de entrada
+    Given o usuário preenche os campos com dados inválidos
+      | Campo            | Valor inválido       |
+      | Valor            | "abc"               |
+      | Data de efetivação | "31/02/2024"       |
+      | Cliente destino  | "MuitoTexto@@!!"    |
+    When ele tenta enviar a transferência
+    Then o sistema deve alertar sobre os erros em cada campo
+
+  Scenario: Preenchimento de campos obrigatórios
+    Given o usuário não preenche todos os campos necessários
+    When ele tenta confirmar a transferência
+    Then o sistema deve exigir o preenchimento dos campos obrigatórios
+
+  Scenario: Restrição de datas inválidas
+    Given o usuário seleciona uma data de efetivação no passado
+    When ele tenta realizar a transferência
+    Then o sistema deve impedir a seleção de datas inválidas
